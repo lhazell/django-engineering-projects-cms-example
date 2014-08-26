@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+    <div class="logo-container col-md-4">
+        <a href="{% url 'main:main-index' %}" class="svg">
+          <object type="image/svg+xml" data="{% static 'main/img/vectors/example-engineering-logo.svg' %}" class="logo">
+            <img src="{% static 'main/img/vectors-fallback/example-engineering-logo.png' %}" alt="Example Engineering logo">
+          </object>
+        </a>
+    </div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

@@ -1,0 +1,109 @@
+/* PROJECTS SASS FILE */
+/* SASS VARIABLES */
+/* MAIN STYLES================================================== */
+/* line 11, ../sass/style.scss */
+.pagination {
+  text-align: center;
+  width: 100%;
+}
+/* line 14, ../sass/style.scss */
+.pagination .page-links {
+  display: inline-block;
+}
+
+/* line 21, ../sass/style.scss */
+.projects-container h3, .list-container h3, .projects-container p, .list-container p {
+  text-align: left;
+  padding: 0 14px 14px 0;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* line 29, ../sass/style.scss */
+.projects-container, .projects-container .container, .list-container, .list-container .container {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+/* line 33, ../sass/style.scss */
+.projects-container .expand, .list-container .expand {
+  color: #03779A;
+  font-weight: bold;
+  font-size: 1.2em;
+  white-space: nowrap;
+}
+/* line 38, ../sass/style.scss */
+.projects-container .expand:hover, .list-container .expand:hover {
+  text-decoration: none;
+  color: #025068;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+/* line 45, ../sass/style.scss */
+.projects-container .image-container, .list-container .image-container {
+  margin: 1em;
+  height: 206px;
+  overflow: hidden;
+  text-align: left;
+}
+/* line 50, ../sass/style.scss */
+.projects-container .image-container .project-image, .list-container .image-container .project-image {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 5px;
+}
+/* line 58, ../sass/style.scss */
+.projects-container .divider, .list-container .divider {
+  margin: 21px 0;
+}
+/* line 61, ../sass/style.scss */
+.projects-container h3, .list-container h3 {
+  color: #03779A;
+}
+
+/* line 72, ../sass/style.scss */
+.detail ul, .detail ol, .teaser ul, .teaser ol {
+  list-style: none outside;
+  margin: 1em;
+}
+/* line 75, ../sass/style.scss */
+.detail ul li, .detail ol li, .teaser ul li, .teaser ol li {
+  line-height: 17px;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 27px;
+}
+/* line 82, ../sass/style.scss */
+.detail ul, .teaser ul {
+  list-style-type: disc;
+}
+/* line 85, ../sass/style.scss */
+.detail ol, .teaser ol {
+  list-style-type: decimal;
+}
+
+/* SASS DEFAULTS */
+/* Small devices (Android,480px and up) */
+/* End @Media 480px  */
+/* Small devices (Android,640px and up) */
+/* End @Media 640px  */
+/* Small devices (Android,768px and up) */
+@media (min-width: 768px) {
+  /* line 105, ../sass/style.scss */
+  .flexslider {
+    margin: 0 auto 60px;
+    width: 700px;
+  }
+}
+/* End @Media 480px  */
+/* Small devices (Android,992px and up) */
+/* End @Media 992px  */
+/* Small devices (Android,1200x and up) */
+/* End @Media 1200px  */

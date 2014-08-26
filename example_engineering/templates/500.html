@@ -1,0 +1,7 @@
+{% extends "./error.html" %}
+
+{% block error %}
+  <p class="error-value">500</p>
+  <h1>Server Error</h1>
+  <h3>An Error has occured. Use the button below to return to the Homepage, or <a href="{% url 'main:main-contact' %}">report the error</a></h3>
+{% endblock error %}

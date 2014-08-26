@@ -1,0 +1,1 @@
+{% if slides %}{% for slide in slides %}.hero .{{ slide.project_category }} {background-image:url('{{ slide.slide_image.url }}=s1280');}{% endfor %}{% else %}{% endif %}

@@ -1,0 +1,433 @@
+{% extends "main/base.html" %}
+
+{% load staticfiles %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% url 'main:dynamic-css' %}"/>
+{% endblock css %}
+
+{% block title %}Example Engineering - Leading Engineering and Environmental Testing Agency{% endblock %}
+
+{% block header-id %}id="home"{% endblock %}
+
+{% block main-navigation %}
+<div class="navbar-collapse collapse" id="navigation">
+  <ul class="nav navbar-nav navbar-left">
+    <li class=""><a href="#home">Home </a></li>
+    <li class=""><a href="#projects-slider">Projects</a></li>
+    <li class=""><a href="#clients">Clients </a></li>
+    <li class=""><a href="#corporate-overview">Corporate Overivew</a></li>
+    <li class=""><a href="#services">Services</a></li>
+    <li class=""><a href="#careers">Careers</a></li>
+    <li class=""><span href="" data-toggle="modal" data-target="#contact">Contact</span></li>
+    <li class=""><a href="/admin"><span class="icon-user"></span> Login</a></li>
+  </ul>
+</div><!--/.nav-collapse -->
+{% endblock main-navigation %}
+
+{% block content %}
+  
+<div class="sliding-container">
+<!-- HERO SLIDER -->
+  {% if slides %}
+  <div class="hero clearfix">
+      <ul id="slides">
+        {% for slide in slides %}
+        <li class="{{ slide.project_category }}">
+          <div class="container">
+            <div class="row">
+              <div class="message col-md-7 col-md-offset-5">
+                <h1>{{ slide.slide_heading }}</h1>
+                <h2>{{ slide.slide_sub_heading }}</h2>
+                <p>{{ slide.slide_intro }}</p>
+
+                <a href="{% url 'project:projects_by_category' slide.project_category %}" class="btn btn-primary btn-lg" role="button">Learn More</a>
+              </div><!--/.message -->
+            </div><!--/.row -->
+
+          </div><!--/.container -->
+        </li><!--/.{{ slide.project_category }} -->
+        {% endfor %}
+      </ul><!--/#slides -->
+  </div><!--/.hero .main-slider -->
+  {% endif %}
+
+  <!-- PROJECTS -->
+  {% if latest_projects %}
+  <div class="projects-slider" id="projects-slider">
+    <div class="container-fluid">
+      <div class="row">
+        <h2 class="col-md-8 col-md-offset-1">Recent Projects:</h2>
+      </div><!--/.row -->
+
+      <div class="slides-container">
+        <ul class="slides">
+          {% for project in latest_projects %}
+          <li>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="image-container">
+                  {% with project.images.all|first as image %}
+                    <img src="{{ image.image.url }}=s384" alt="{{ image.name }}" class="project-image">
+                    <!--a href="{{ object.docfile.url }}">{{ object.docfile.name }}</a-->
+                  {% endwith %} 
+                </div><!--/.image-container -->
+              </div><!--/.col-md-4 -->
+              <div class="col-sm-8">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.teaser|truncatewords:42 }}<a href="{% url 'project:project_detail' project.id %}" class="default-link"><span>Show More <span class="icon-resize-full"></span></span></a></p>
+              </div><!--/.col-md-8 -->
+            </div><!--/.row -->
+          </li>            
+          {% endfor %}
+        </ul>
+      </div><!--/.slides-container -->
+
+      <div class="slides-control">
+        <div class="wrapper"><div class="previous"><span class="icon-chevron-left"></span></div></div>
+        <div class="wrapper"><div class="position-display"><span class="current">1</span><span>/</span><span class="total">5</span></div></div>
+        <div class="wrapper"><div class="next"><span class="icon-chevron-right"></span></div></div>
+      </div><!--/.slides-control -->
+    </div><!--/.container-fluid -->
+  </div><!--/.projects-slider -->
+  {% endif %}
+
+  <!-- CLIENT LIST -->
+  <div class="client-list" id="clients">
+    <div class="container">
+      <h2>Client List:</h2>
+      <ul>
+        <div class="row">
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/broward-county.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/coca-cola.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/florida-department-of-transportation.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/hdr.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/the-home-depot.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/housing-urban-development.png' %}" alt="logo">
+          </li>
+        </div><!--/.row -->
+        <div class="row">
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/miami-parks-and-recreation.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/miami-date-county.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/perez-and-perez.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/sun-trust.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/broward-county-public-schools.png' %}" alt="logo">
+          </li>
+          <li class="client-logo col-xs-4 col-sm-2">
+            <img src="{% static 'main/img/clients/united-states-coast-guard.png' %}" alt="logo">
+          </li>
+        </div><!--/.row -->
+      </ul>
+    </div><!--/.container -->
+  </div><!--/.client-list -->
+
+  <!-- CORPORATE OVERVIEW -->
+  <div class="corporate-overview" id="corporate-overview">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4 right">
+          <div class="row">
+            <div class="message">
+              <h3 class="special">10,000<span>+</span> <span class="block">Properties</span></h3>
+              
+              <h2>Corporate Overview:</h2>
+
+              <p>Doloremque ipsum dolor sit amet, consectetur adipisicing elit. Ipsum facere laudantium dolore magnam officiis at, adipisicing orem ipsum dolor sit amet, consectetur adipisicing elit. Minus debitis sit ipsa ut sequi cumque neque consequuntur qui nihil, hic, aliquam, odio dolor perspiciatis, inventore quia similique unde. Iste a dolorum hic repellendus fuga, eum reiciendis, voluptatibus architecto, suscipit quis, inventore! Quos commodi debitis eius quod rem voluptatibus, ullam nostrum, reiciendis porro accusamus modi quibusdam veniam?</p>
+            </div>
+          </div>
+        </div><!--/.col-md-4 -->
+        <div class="col-sm-12 col-md-8">
+          <div class="row">
+            <div class="united-states">
+              <div class="message-container">
+                <div class="message">Projects in 49 States
+                  <h3>and U.S. Territories</h3>
+                </div>  
+              </div><!--/.message-container -->
+              
+              <ul class="stately" id="plain"> 
+                <li data-state="al" class="projects not-colored al">A</li>
+                <li data-state="ak" class="projects not-colored ak">B</li>
+                <li data-state="ar" class="projects not-colored ar">C</li>           
+                <li data-state="az" class="projects not-colored az">D</li>
+                <li data-state="ca" class="projects not-colored ca">E</li>
+                <li data-state="co" class="projects not-colored co">F</li>
+                <li data-state="ct" class="projects not-colored ct">G</li>
+                <li data-state="de" class="projects not-colored de">H</li>
+                <li data-state="dc" class="projects not-colored dc">I</li>
+                <li data-state="fl" class="projects not-colored fl">J</li>
+                <li data-state="ga" class="projects not-colored ga">K</li>
+                <li data-state="hi" class="projects not-colored hi">L</li>
+                <li data-state="id" class="projects not-colored id">M</li>
+                <li data-state="il" class="projects not-colored il">N</li>
+                <li data-state="in" class="projects not-colored in">O</li>
+                <li data-state="ia" class="projects not-colored ia">P</li>
+                <li data-state="ks" class="projects not-colored ks">Q</li>
+                <li data-state="ky" class="projects not-colored ky">R</li>
+                <li data-state="la" class="projects not-colored la">S</li>
+                <li data-state="me" class="projects not-colored me">T</li>
+                <li data-state="md" class="projects not-colored md">U</li>
+                <li data-state="ma" class="projects not-colored ma">V</li>
+                <li data-state="mi" class="projects not-colored mi">W</li>
+                <li data-state="mn" class="projects not-colored mn">X</li>
+                <li data-state="ms" class="projects not-colored ms">Y</li>
+                <li data-state="mo" class="projects not-colored mo">Z</li>
+                <li data-state="mt" class="no-projects mt">a</li>
+                <li data-state="ne" class="no-projects ne">b</li>
+                <li data-state="nv" class="projects not-colored nv">c</li>
+                <li data-state="nh" class="projects not-colored nh">d</li>
+                <li data-state="nj" class="projects not-colored nj">e</li>
+                <li data-state="nm" class="projects not-colored nm">f</li>
+                <li data-state="ny" class="projects not-colored ny">g</li>
+                <li data-state="nc" class="projects not-colored nc">h</li>
+                <li data-state="nd" class="projects not-colored nd">i</li>
+                <li data-state="oh" class="projects not-colored oh">j</li>     
+                <li data-state="ok" class="projects not-colored ok">k</li>
+                <li data-state="or" class="projects not-colored or">l</li>
+                <li data-state="pa" class="projects not-colored pa">m</li>
+                <li data-state="ri" class="projects not-colored ri">n</li>
+                <li data-state="sc" class="projects not-colored sc">o</li>
+                <li data-state="sd" class="projects not-colored sd">p</li>
+                <li data-state="tn" class="projects not-colored tn">q</li>
+                <li data-state="tx" class="projects not-colored tx">r</li>
+                <li data-state="ut" class="projects not-colored ut">s</li>
+                <li data-state="va" class="projects not-colored va">t</li>
+                <li data-state="vt" class="projects not-colored vt">u</li>     
+                <li data-state="wa" class="projects not-colored wa">v</li>
+                <li data-state="wv" class="projects not-colored wv">w</li>
+                <li data-state="wi" class="projects not-colored wi">x</li>
+                <li data-state="wy" class="projects not-colored wy">y</li> 
+              </ul>
+              <h2 class="service-locations">United States</h2>
+              <h3 class="hover-state"></h3>
+            </div>
+          </div>
+        </div><!--/.col-sm-12 .col-md-8 -->
+      </div><!--/.row -->
+      <div class="row">
+        <div class="col-sm-4 col-md-4 right">
+          <div class="row"><!-- Caribbean -->
+            <div class="caribbean">
+              <div class="projects not-colored icon-puerto-rico"></div>
+              <div class="no-projects icon-virgin-islands"></div>
+              <h2 class="service-locations">Puerto Rico</h2>
+              <h2 class="service-locations">U.S. Virgin Islands</h2>
+            </div>
+          </div><!--/.row -->
+        </div><!--/.col-sm-12 .col-md-4 -->
+        <div class="col-sm-8 col-md-8">
+          <div class="row">
+            <div class="message clearfix">
+              <h3>Highly Qualified</h3>
+              <p>Aliquam ipsum dolor sit amet, consectetur adipisicing elit. Ipsum facere laudantium dolore magnam officiis at, adipisicing orem ipsum dolor sit amet, consectetur adipisicing elit. Minus debitis sit ipsa ut sequi cumque neque consequuntur qui nihil, hic, aliquam, odio dolor perspiciatis, inventore quia similique unde. Iste a dolorum hic repellendus fuga, eum reiciendis, voluptatibus architecto, suscipit quis, inventore! Quos commodi debitis eius quod rem voluptatibus, ullam nostrum, reiciendis porro accusamus modi quibusdam veniam Doloremque ipsum dolor sit amet, consectetur adipisicing elit. Ipsum facere laudantium dolore magnam officiis at, adipisicing orem ipsum dolor sit amet, consectetur adipisicing elit. Minus debitis sit ipsa ut sequi cumque neque consequuntur qui nihil, hic, aliquam, odio dolor perspiciatis, inventore quia similique unde. Iste a dolorum hic repellendus fuga, eum reiciendis, voluptatibus architecto, suscipit quis, inventore! Quos commodi eius quod rem voluptatibus, ullam nostrum, reiciendis porro accusamus modi quibusdam veniam Minus.</p>
+            </div><!--/.services -->
+          </div><!--/.row -->
+        </div><!--/.col-sm-12 .col-md-8 -->
+      </div><!--/.row -->
+    </div><!--/.container -->
+  </div><!--/.corporate-overview -->
+
+  <!-- SERVICES -->
+  <div id="services">
+    <div class="container">
+      <!-- corporate overview services -->
+      <div class="row services">
+        <h2>Services:</h2>
+        <ul>
+          <li class="col-sm-6 col-xs-12">
+            <div>
+              <div class="icon-transportation"></div>
+              <div class="service-description">
+                <h3>Transportation</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam reiciendis dolorum soluta velit? Harum reprehenderit voluptatem esse fuga dicta praesentium pariatur, tempore totam cupiditate quasi. Sunt, hic! <a href="{% url 'project:projects_by_category' category='transportation' %}" class="default-link">Transportation Projects</a></p>
+              </div><!--/.col-sm-10 -->
+            </div>
+          </li>
+          <li class="col-sm-6 col-xs-12">
+            <div>
+              <div class="icon-construction"></div>
+              <div class="service-description">
+                <h3>Civil Engineering</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam reiciendis dolorum soluta velit? Harum reprehenderit voluptatem esse fuga dicta praesentium pariatur, tempore totam cupiditate quasi. Sunt, hic! <a href="{% url 'project:projects_by_category' category='civil-engineering' %}" class="default-link">Civil Engineering Projects</a></p>
+              </div><!--/.col-sm-10 -->
+            </div>
+          </li>
+          <li class="col-sm-6 col-xs-12">
+            <div>
+              <div class="icon-constructionmanagement"></div>
+              <div class="service-description">
+                <h3>Contstruction Management</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam reiciendis dolorum soluta velit? Harum reprehenderit voluptatem esse fuga dicta praesentium pariatur, tempore totam cupiditate quasi. Sunt, hic! <a href="{% url 'project:projects_by_category' category='contstruction-management' %}" class="default-link">Construction <span class="hidden-sm hidden-xs">Management </span>Projects</a></p>
+              </div><!--/.col-sm-10 -->
+            </div>
+          </li>
+          <li class="col-sm-6 col-xs-12">
+            <div>
+              <div class="icon-environment"></div>
+              <div class="service-description">
+                <h3>Energy Systems</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam reiciendis dolorum soluta velit? Harum reprehenderit voluptatem esse fuga dicta praesentium pariatur, tempore totam cupiditate quasi. Sunt, hic! <a href="{% url 'project:projects_by_category' category='energy-systems' %}" class="default-link">Energy Systems Projects</a></p>
+              </div><!--/.col-sm-10 -->
+            </div>
+          </li>
+          <li class="col-sm-6 col-xs-12">
+            <div>
+              <div class="icon-environmental-testing"></div>
+              <div class="service-description">
+                <h3>Environmental Testing</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam reiciendis dolorum soluta velit? Harum reprehenderit voluptatem esse fuga dicta praesentium pariatur, tempore totam cupiditate quasi. Sunt, hic! <a href="{% url 'project:projects_by_category' category='environmental-testing' %}" class="default-link">Environmental <span class="hidden-xs">Testing </span>Projects</a></p>
+              </div><!--/.col-sm-10 -->
+            </div>
+          </li>
+          <li class="col-sm-6 col-xs-12">
+            <div>
+              <div class="icon-mechanical-engineering"></div>
+              <div class="service-description">
+                <h3>Mechanical Engineering</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam reiciendis dolorum soluta velit? Harum reprehenderit voluptatem esse fuga dicta praesentium pariatur, tempore totam cupiditate quasi. Sunt, hic! <a href="{% url 'project:projects_by_category' category='mechanical-engineering' %}" class="default-link"><span class="hidden-xs">Mechanical </span>Engineering Projects</a></p>
+              </div><!--/.col-sm-10 -->
+            </div>
+          </li>
+        </ul>
+      </div><!--/.row -->
+    </div><!--/.container -->
+  </div><!--/#services -->
+
+  <!-- JOIN OUR TEAM -->
+  <div class="jobs" id="careers">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <h2>Join Our Team</h2>
+        </div><!--/.col-xs-4-->
+         <div class="col-sm-8"></div><!--/.col-xs-8-->
+      </div><!--/.row -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <object type="image/svg+xml" data="{% static 'main/img/vectors/employees.svg' %}" class="logo">
+            <img src="{% static 'main/img/vectors-fallback/employees.png' %}" alt="male female employee graphic">
+          </object>
+        </div><!--/.col-xs-4-->
+        <div class="message col-xs-12 col-sm-9">
+          <p>We’re always looking for smart new tallent to join our expanding team. Our next hire could be you.</p>
+          <a href="{% url 'jobs:jobs_list' %}">View Openings</a>
+        </div><!--/.col-xs-8-->
+      </div><!--/.row -->
+    </div><!--/.container -->
+  </div><!--/.jobs -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="container">
+        <ul class="center-block">
+          <li><a href="#">Home</a></li><li class="divider">| </li>
+          <li><a href="{% url 'main:about' %}">About Us</a></li><li class="divider">| </li>
+          <li><a href="{% url 'main:privacy' %}"><!--Policy -->Privacy</a></li><li class="divider">| </li>
+          <li><a href="{% url 'main:terms-of-service' %}">Terms of Service</a></li><li class="divider">| </li>
+          <li><a href="#" data-toggle="modal" data-target="#contact"><span class="glyphicon glyphicon-envelope"></span> Contact Us</a></li><li class="divider">| </li>
+          <li><a href="tel:+1-314-159-2653"><span class="glyphicon glyphicon-earphone"></span> (314) 159-2653</a></li><li class="divider"></li>
+          <!--li><a href="https://twitter.com/" target="_blank"><span class="icon-twitter"></span> </a></li-->
+        </ul>
+    </div><!-- /.container -->
+  </div><!-- /.footer -->
+  </div><!-- /.sliding-container -->
+
+  <!-- #CONTACT -->
+  <!-- Modal -->
+  <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="{% url 'main:main-contact' %}" role="form" method="post" class="ajax">
+          <div class="modal-header clearfix">
+            <div class="col-md-12">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="contactlLabel">Contact EBS Engineering<span class="hidden-xs"> Inc.</span></h4>
+            </div>
+          </div>
+          <div class="modal-body clearfix">
+            {% csrf_token %}
+            <div class="ajax-response col-xs-12">
+              <h3></h3>
+            </div><!--/.col-md-10 -->
+            <div class="form-group">
+              <label class="control-label col-md-2" for="id_name">Name:</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" id="id_name" maxlength="49" name="name" placeholder="Your name">
+              </div><!--/.col-md-10 -->
+            </div><!--/.form-group -->
+            <div class="form-group">
+              <label class="control-label col-md-2" id="id_email">E-mail:</label>
+              <div class="col-md-10">
+                <input type="email" class="form-control required" id="id_email" maxlength="75" name="email" placeholder="Your e-mail">
+              </div><!--/.col-md-10 -->
+            </div><!--/.form-group -->
+
+            <div class="form-group">
+              <label class="control-label col-md-2" id="id_telephone">Telephone:</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control required" id="id_telephone" maxlength="75" name="telephone" placeholder="Telephone number">
+              </div><!--/.col-md-10 -->
+            </div><!--/.form-group -->
+            <div class="form-group">
+              <label class="control-label col-md-2" id="id_company_name">Company:</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control required" id="id_company_name" maxlength="75" name="company" placeholder="Company name">
+              </div><!--/.col-md-10 -->
+            </div><!--/.form-group -->
+
+            <div class="form-group">
+              <label class="control-label col-md-2" id="id_Message">Message:</label>
+              <div class="col-md-10">
+                <textarea class="form-control required" id="id_Message" name="message" rows="7" placeholder="Your message"></textarea>
+              </div><!--/.col-md-10 -->
+            </div><!--/.form-group -->
+          </div><!--/.modal-body -->
+          <div class="modal-footer">
+            <div class="col-md-12">
+              <span class="close-span" data-dismiss="modal">Close</span>
+              <span> or </span>
+              <button type="submit" class="btn btn-email">Send</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--/ Modal End #contact -->
+
+  <!-- MAP -->
+  <div class="map">
+  </div><!-- /.map -->
+{% endblock content %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="{% static 'main/assets/js/jquery.slides.min.js' %}"></script>
+<script src="{% static 'main/assets/js/bootstrapValidator.min.js' %}"></script>
+<script src="{% static 'main/assets/js/holder.js' %}"></script>
+<script src="{% static 'example_engineering/js/base.js' %}"></script> 
+<script src="{% static 'main/js/script.js' %}"></script>
+<script src="{% static 'main/js/contactValidation.js' %}"></script>
+{% endblock scripts %}

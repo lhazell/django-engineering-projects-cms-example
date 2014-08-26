@@ -1,0 +1,108 @@
+{% load staticfiles %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="{% static 'main/ico/favicon.ico' %}">
+  <title>{% block title %}Example Engineering - Leading Engineering and Environmental Testing Agency{% endblock %}</title>
+
+  <!-- WebFont -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400' rel='stylesheet' type='text/css'>
+
+  {% block css %}
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}"/>
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}"/>
+  {% endblock css %}
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+        <script src="{% static 'main/assets/js/html5shiv.js' %}"></script>
+        <script src="{% static 'main/assets/js/respond.min.js' %}"></script>
+        <script src="{% static 'main/assets/js/modernizr.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/style-ie8.css' %}" />
+  <![endif]-->
+
+  <!-- Django Static directory variable -->
+  <script type="text/javascript">
+          DJANGO_STATIC_URL = '{{ STATIC_URL }}';
+  </script>
+
+  <script>
+    //analytics placeholer
+  </script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header hidden-xs" {% block header-id %} id="home"{% endblock %}>
+    <div class="container">
+      <div class="row">
+        <div class="logo-container col-sm-4">
+          <a href="{% url 'main:main-index' %}" class="svg">
+            <object type="image/svg+xml" data="{% static 'main/img/vectors/example-engineering-logo.svg' %}" class="logo">
+              <img src="{% static 'main/img/vectors-fallback/example-engineering-logo.png' %}" alt="EBS Engineering logo">
+            </object>
+          </a>
+        </div><!--/.logo-container col-md-4-->
+        <div class="col-sm-2 col-md-4">
+        </div>
+        <div class="header-contact col-sm-6 col-md-4">
+          <span class="icon-phone-talk"></span> (314) 159-2653
+        </div>
+      </div><!--/.row -->
+    </div><!--/.container -->
+  </div><!--/.header -->
+
+  <!-- NAVBAR -->
+  <div class="navbar navbar-default clearfix" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a href="{% url 'main:main-index' %}" class="svg navbar-brand visible-xs">
+          <object type="image/svg+xml" data="{% static 'main/img/vectors/example-engineering-logo.svg' %}" class="logo">
+            <img src="{% static 'main/img/vectors-fallback/example-engineering-logo.png' %}" alt="EBS Engineering logo">
+          </object>
+        </a>
+        <!--a class="navbar-brand visible-xs" href="#">EBS Engineering Inc.</a-->
+      </div>
+      {% block main-navigation %}
+      <div class="navbar-collapse collapse" id="navigation">
+        <ul class="nav navbar-nav navbar-left">
+          <li class=""><a href="/#home">Home </a></li>
+          <li class=""><a href="/#projects-slider">Projects</a></li>
+          <li class=""><a href="/#clients">Clients </a></li>
+          <li class=""><a href="/#corporate-overview">Corporate</a></li>
+          <li class=""><a href="/#services">Services</a></li>
+          <li class=""><a href="/#careers">Careers</a></li>
+          <li class=""><a href="{% url 'main:main-contact' %}">Contact</a></li>
+          <li class=""><a href="/admin"><span class="icon-user"></span> Login</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+      {% endblock main-navigation %}
+    </div><!--/.container-->
+  </div><!--/.navbar-->
+
+  {% block content %}{% endblock %}
+
+  {% block scripts %}
+  <!-- Bootstrap core JavaScript
+      ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!--if jQuery not set load local version -->
+  <script>window.jQuery || document.write('<script src="{% static 'main/assets/js/jquery-1.11.1.min.js' %}">\x3C/script>')</script>
+  <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'example_engineering/js/base.js' %}"></script>
+  {% endblock %}
+</body>
+</html>

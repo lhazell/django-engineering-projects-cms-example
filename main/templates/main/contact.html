@@ -1,0 +1,63 @@
+{% extends "main/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Example Engineering - Contact Page{% endblock %}
+
+{% block content %}
+
+<div class="container contact" id="contact">
+
+    <p>
+      <h1>Contact Us</h1>
+    </p>
+
+    <form action="{% url 'main:main-contact' %}" role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="control-label col-md-2" for="id_name">Name:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" id="id_name" maxlength="49" name="name" placeholder="Your name">
+          </div><!--/.col-md-10 -->
+        </div><!--/.form-group -->
+        <div class="form-group">
+          <label class="control-label col-md-2" id="id_email">E-mail:</label>
+          <div class="col-md-10">
+            <input type="email" class="form-control required" id="id_email" maxlength="75" name="email" placeholder="Your e-mail">
+          </div><!--/.col-md-10 -->
+        </div><!--/.form-group -->
+
+        <div class="form-group">
+          <label class="control-label col-md-2" id="id_telephone">Telephone:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control required" id="id_telephone" maxlength="75" name="telephone" placeholder="Telephone number">
+          </div><!--/.col-md-10 -->
+        </div><!--/.form-group -->
+        <div class="form-group">
+          <label class="control-label col-md-2" id="id_company_name">Company:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control required" id="id_company_name" maxlength="75" name="company" placeholder="Company name">
+          </div><!--/.col-md-10 -->
+        </div><!--/.form-group -->
+
+        <div class="form-group">
+          <label class="control-label col-md-2" id="id_Message">Message:</label>
+          <div class="col-md-10">
+            <textarea class="form-control required" id="id_Message" name="message" rows="7" placeholder="Your message"></textarea>
+          </div><!--/.col-md-10 -->
+        </div><!--/.form-group -->
+        <div class="col-md-12 footer">
+          <button type="submit" class="btn btn-email">Send</button>
+        </div>
+    </form>
+
+</div><!--/.container -->
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static 'main/assets/js/bootstrapValidator.min.js' %}"></script>
+<script src="{% static 'main/js/contactValidation.js' %}"></script>
+{% endblock scripts %}

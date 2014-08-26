@@ -1,0 +1,65 @@
+{% extends "main/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Example Engineering - Projects{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'project/assets/css/flexslider.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'project/css/style.css' %}"/>
+{% endblock css %}
+
+
+{% block content %}
+
+<!-- PROJECTS -->
+<div class="container">
+  <div class="projects-container">
+    <ul class="slides">
+      {% for project in projects %}
+      <li>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="image-container">
+              {% with project.images.all|first as image %}
+                <img src="{{ image.image.url }}=s384" alt="{{ image.name }}" class="project-image">
+                <!--a href="{{ object.docfile.url }}">{{ object.docfile.name }}</a-->
+              {% endwith %} 
+            </div><!--/.image-container -->
+          </div><!--/.col-md-4 -->
+          <div class="col-sm-8">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.teaser|truncatewords:42 }}<a href="{% url 'project:project_detail' project.id %}" class="default-link"><span>Show More <span class="icon-resize-full"></span></span></a></p>
+          </div><!--/.col-md-8 -->
+        </div><!--/.row -->
+      </li>
+
+      <hr class="divider">
+
+      {% endfor %}
+    </ul>
+  </div><!--/.slides-container -->
+
+  {% if is_paginated %}
+  <div class="pagination">
+    <span class="page-links">
+      {% if page_obj.has_previous %}
+      <a href="/projects?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+      <span class="page-current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+      {% if page_obj.has_next %}
+        <a href="/projects?page={{ page_obj.next_page_number }}">next</a>
+      {% endif %}
+    </span>
+  </div>
+  {% endif %}
+</div><!--/.container -->
+{% endblock content %}
+
+
+{% block scripts %}
+{{ block.super }}
+{% endblock scripts %}

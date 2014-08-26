@@ -1,0 +1,307 @@
+@import "compass/css3";
+
+/* SASS VARIABLES */
+
+$green: rgb(89,168,15);
+
+/* GLOBAL STYLES-------------------------------------------------- */
+body {
+  margin-top:49px;
+  background:#fff;
+  font-size:100%;
+  font-size:14px;
+  line-height:24px;
+  color:#888;
+  -webkit-font-smoothing:antialiased;
+  /* Fix for webkit rendering */
+  -webkit-text-size-adjust:100%;
+}
+/* Main Font */
+body,h1,h2,h3,h4,h5,h6,.button,input[type="button"],input[type="submit"],input[type="text"],input[type="password"],input[type="email"],textarea,select,button {
+  font-family: "Open Sans","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+/* #Typography================================================== */
+h1,h2,h3 {
+  font-family:'Montserrat','sans-serif';
+  font-weight:700;
+  color:#333;
+}
+
+h1, h2 {
+  text-transform:uppercase;
+}
+
+h2 span {
+  color:#e54c41;
+}
+h4,h5,h6 {
+  color:#505050;
+  font-weight:300;
+}
+h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
+  font-weight:inherit;
+}
+h1 {
+  font-size:28px;
+  line-height:50px;
+}
+h2 {
+  font-size:24px;
+  line-height:30px;
+}
+h3 {
+  font-size:20px;
+  line-height:24px;
+}
+h4 {
+  font-size:18px;
+  line-height:30px;
+}
+h5 {
+  font-size:16px;
+  line-height:24px;
+}
+h6 {
+  font-size:14px;
+  line-height: 21px;
+}
+p {
+  /*margin:0 0 15px 0;line-height:24px;*/
+  font-size:17px;
+  font-weight:300;
+  line-height:27px;
+  color:#777;
+}
+p img {
+  margin:0;
+}
+p.lead {
+  font-size:17px;
+  font-weight:300;
+  line-height:27px;
+  color:#777;
+}
+em {
+  font-style:italic;
+}
+strong {
+  font-weight:600;
+  color:#333;
+}
+small {
+  font-size:80%;
+}
+hr {
+  border:solid #ddd;
+  border-width:1px 0 0;
+  clear:both;
+  margin:10px 0 30px;
+  height: 0;
+}
+/* ICONMOON */
+@font-face {
+  font-family:'icomoon';
+  src:url('../fonts/icomoon/fonts/icomoon.eot');
+  src:url('../fonts/icomoon/fonts/icomoon.eot?#iefix') format('embedded-opentype'),url('../fonts/icomoon/fonts/icomoon.ttf') format('truetype'),url('../fonts/iconmoon/fonts/icomoon.woff') format('woff'),url('../fonts/icomoon/fonts/icomoon.svg#icomoon') format('svg');
+  font-weight:normal;
+  font-style: normal;
+}
+[class^="icon-"],[class*=" icon-"] {
+  font-family:'icomoon';
+  speak:none;
+  font-style:normal;
+  font-weight:normal;
+  font-variant:normal;
+  text-transform:none;
+  line-height:1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.icon-mechanical-engineering:before {
+  content: "\e611";
+}
+.icon-environmental-testing:before {
+  content: "\e60f";
+}
+.icon-environmental-testing-2:before {
+  content: "\e610";
+}
+.icon-phone-talk:before {
+  content: "\e60d";
+}
+.icon-puerto-rico:before {
+  content: "\e606";
+}
+.icon-virgin-islands:before {
+  content: "\e60b";
+}
+.icon-constructionmanagement:before {
+  content: "\e600";
+}
+.icon-construction:before {
+  content: "\e601";
+}
+.icon-environment:before {
+  content: "\e602";
+}
+.icon-transportation:before {
+  content: "\e603";
+}
+.icon-mail:before {
+  content: "\e60e";
+}
+.icon-resize-full:before {
+  content: "\e608";
+}
+.icon-earphone:before {
+  content: "\e604";
+}
+.icon-envelope:before {
+  content: "\e605";
+}
+.icon-ok:before {
+  content: "\e60c";
+}
+.icon-user:before {
+  content: "\e607";
+}
+.icon-chevron-left:before {
+  content: "\e609";
+}
+.icon-chevron-right:before {
+  content: "\e60a";
+}
+
+/* #Lists================================================== */
+
+ul,ol {
+  margin:0;
+}
+ul {
+  list-style:none outside;
+}
+ol {
+  list-style:decimal;
+}
+ol,ul.square,ul.circle,ul.disc {
+  margin-left:30px;
+}
+ul.square {
+  list-style:square outside;
+}
+ul.circle {
+  list-style:circle outside;
+}
+ul.disc {
+  list-style:disc outside;
+}
+li {
+  line-height:18px;
+}
+ul.large li {
+  line-height:21px;
+}
+li p {
+  line-height: 21px;
+}
+/* #Forms================================================== */
+input[type="text"],input[type="password"],input[type="email"],textarea,select {
+  border:1px solid #e0e0e0;
+  padding:8px 9px;
+  outline:none;
+  font-size:14px;
+  color:#888;
+  margin:0;
+  max-width:100%;
+  display:block;
+  background:#fff;
+  -webkit-box-shadow:inset 1px 1px 2px 0px rgba(0,0,0,0.06);
+  -moz-box-shadow:inset 1px 1px 2px 0px rgba(0,0,0,0.06);
+  box-shadow:inset 1px 1px 2px 0px rgba(0,0,0,0.06);
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+}
+select {
+  padding:0;
+}
+input[type="text"]:focus,input[type="password"]:focus,input[type="email"]:focus,textarea:focus {
+  border:1px solid #d6d6d6;
+  color:#888;
+}
+textarea {
+  min-height:60px;
+}
+label,legend {
+  display:block;
+  font-weight:bold;
+  font-size:14px;
+  font-weight:normal;
+  margin-bottom:5px;
+}
+input[type="checkbox"] {
+  display:inline;
+}
+label span,legend span {
+  font-weight:normal;
+  font-size:14px;
+  color: #444;
+}
+.btn-success {
+  color:#fff;
+  background-color: $green;
+  /* 59a80f */
+  border-color: $green;
+}
+
+%green-raised-button {
+  background-color: $green;
+  background-color: #{$green}, .8;
+  border: none;
+  color: white;
+  text-shadow: 0px  -1px 0px rgba(0,0,0,.5);
+  padding-left: 2em;
+  padding-right: 2em;
+  @include background-image(linear-gradient($green, darken($green, 5%)));
+  @include border-radius(2px);
+  @include transition-property(background-color);
+  @include transition-duration(0.3s);
+  @include box-shadow(0px 2px 0px darken($green, 10%), 0px 3px 15px rgba(0,0,0,.3), inset 0px 1px 0px rgba(255,255,255,.3));
+    &:hover, &:focus {
+      color: white;
+      background-color: lighten($green, 10%);
+      @include background-image(linear-gradient(darken($green, 5%), $green));
+    }
+}
+
+.btn-email {
+  @extend %green-raised-button;
+}
+
+.green-button-raised {
+  @extend %green-raised-button;
+  font-weight:700;
+  @include box-shadow(0px 3px 0px darken($green, 20%), 0px 3px 15px rgba(0,0,0,.7), inset 0px 1px 0px rgba(255,255,255,.3));
+}
+
+.btn-success:hover,.btn-success:focus,.btn-success:active,.btn-success.active,.open .dropdown-toggle.btn-success {
+  color:#fff;
+  background-color:rgb(81,154,13);
+  /* 519a0d */
+  border-color:rgb(81,154,13);
+}
+/* Bootstrap Validator (http://bootstrapvalidator.com)================================================== */
+.bv-form .help-block {
+  margin-bottom:0;
+}
+.bv-form .tooltip-inner {
+  text-align:left;
+}
+.has-success .form-control:focus,.has-success .form-control {
+  border-color: $green;
+}
+.has-error .form-control:focus,.has-error .form-control {
+  border-color: red;
+}

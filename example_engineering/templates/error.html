@@ -1,0 +1,53 @@
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="{% static 'main/ico/favicon.ico' %}">
+  <title>EBS Engineering 404 - Page not found</title>
+
+  <!-- WebFont -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400' rel='stylesheet' type='text/css'>
+
+  {% block css %}
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}"/>
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="{% static 'example_engineering/css/error.css' %}"/>
+  {% endblock css %}
+</head>
+<body>
+
+  <!-- Error Page-->
+  {% block content %}
+  <div class="container">
+    <div class="row vertical-center-row">
+      <div class="error">
+        <div class="container">
+          {% block error %}
+          <p class="error-value"></p>
+          <h1>An Error has Occured</h1>
+          <h3>The page you’re looking for could have been deleted or never have existed.</h3>
+          {% endblock %}
+          <a href="{% url 'main:main-index' %}" class="btn green-button-raised btn-lg" role="button">Go to Homepage</a>
+        </div><!--/.container -->
+      </div><!--/.error -->
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block scripts %}
+  <!-- Bootstrap core JavaScript
+      ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!--if jQuery not set load local version -->
+  <script>window.jQuery || document.write('<script src="{% static 'main/assets/js/jquery-1.11.1.min.js' %}">\x3C/script>')</script>
+  <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+  {% endblock %}
+</body>
+</html>

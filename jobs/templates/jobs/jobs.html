@@ -1,0 +1,68 @@
+{% extends "main/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Example Engineering - Jobs{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'project/assets/css/flexslider.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'project/css/style.css' %}"/>
+{% endblock css %}
+
+
+{% block content %}
+
+<!-- PROJECTS -->
+{% if jobs %}
+<div class="list-container">
+  <div class="container">
+    <ul class="slides">
+      {% for job in jobs %}
+      <li>
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>{{ job.title }}</h3>
+            <div class="teaser">
+              {% autoescape off %}{{ job.teaser }}{% endautoescape %}  
+            </div>
+            <div class="col-xs-12 text-right">
+              <a href="{% url 'jobs:job_detail' job.id %}"  class="default-link"> Full Description</a>
+            </div><!--/.col-xs-12 -->
+          </div><!--/.col-md-12 -->
+        </div><!--/.row -->
+      </li>
+
+      <hr class="divider">
+
+      {% endfor %}
+    </ul>
+  </div><!--/.container -->
+  {% else %}
+    <div class="container">
+      <h1>There are currently no jobs openings.</h1>
+    </div><!--/.container -->
+  {% endif %}
+  
+  {% if is_paginated %}
+  <div class="pagination">
+    <span class="page-links">
+      {% if page_obj.has_previous %}
+      <a href="/jobs?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+      <span class="page-current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+      {% if page_obj.has_next %}
+        <a href="/jobs?page={{ page_obj.next_page_number }}">next</a>
+      {% endif %}
+    </span>
+  </div>
+  {% endif %}
+</div><!--/.projects-container -->
+{% endblock content %}
+
+
+{% block scripts %}
+{{ block.super }}
+{% endblock scripts %}

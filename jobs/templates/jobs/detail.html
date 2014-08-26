@@ -1,0 +1,36 @@
+{% extends "main/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Example Engineering - Job: {{ job_detail.title }}{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'project/assets/css/flexslider.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'project/css/style.css' %}"/>
+{% endblock css %}
+
+{% block content %}
+
+<!-- PROJECTS -->
+<div class="list-container">
+  <div class="container">
+    <div class="row">
+      <h1>{{ job_detail.title }}</h1>
+    </div><!--/.row -->
+    
+    <!-- text values -->
+    <div class="row">
+      <div class="detail">
+        <p>{% autoescape off %}{{ job_detail.description }}{% endautoescape %}</p>
+      </div><!--/.col-md-8 -->
+    </div><!--/.row -->
+  </div><!--/.container -->
+</div><!--/#projects -->
+
+{% endblock content %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static 'project/js/project.js' %}"></script>
+{% endblock scripts %} %}

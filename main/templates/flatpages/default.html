@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Example Engineering - {{ flatpage.title }}{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/flatpages.css' %}"/>
+
+{% endblock css %}
+
+
+{% block content %}
+<div class="container flatpages-container">
+    {{ flatpage.content }}    
+</div>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{{ block.super }}
+{% endblock scripts %}
