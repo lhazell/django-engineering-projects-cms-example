@@ -5,6 +5,9 @@
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% url 'main:dynamic-css' %}"/>
+<!--[if lt IE 9]>
+      <link rel="stylesheet" href="{% url 'main:dynamic-css-ie8' %}"/>
+<![endif]-->
 {% endblock css %}
 
 {% block title %}Example Engineering - Leading Engineering and Environmental Testing Agency{% endblock %}

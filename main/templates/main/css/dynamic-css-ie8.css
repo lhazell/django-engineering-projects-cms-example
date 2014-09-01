@@ -1,0 +1,10 @@
+{% if slides %}
+    {% for slide in slides %}
+    .hero .{{ slide.project_category }} {
+        background-image:url('{{ slide.slide_image.url }}=s1280');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{ slide.slide_image.url }}=s1280', sizingMethod='scale')";
+    }
+
+    {% endfor %}
+{% else %}
+{% endif %}

@@ -57,6 +57,7 @@ class PublicProject(models.Model):
 
     class Meta:
         ordering = ["-date_created"]
+        permissions = (("readonly", "Can Only Read Projects"),)
 
     def __unicode__(self):
        return self.title
@@ -71,6 +72,9 @@ class PublicProjectImage(models.Model):
         storage, path = self.image.storage, self.image.path
         super(PublicProjectImage, self).delete(*args, **kwargs)
         storage.delete(path)
+
+    class Meta:
+        permissions = (("readonly", "Can Only Read Projects"),)
 
     def __unicode__(self):
         return self.name

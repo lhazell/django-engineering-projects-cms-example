@@ -264,6 +264,7 @@ a:hover,a:active {
   @include box-shadow(rgba(0,0,0,0.5) 0 0 5px);
   z-index: 5;
   /* li image fallback */
+  background-color: rgb(0, 89, 177);
   @include background-image(linear-gradient(top,  rgba(0,89,177,.9) 0%,rgba(0,106,201,.9) 100%));
 
     li {
@@ -295,8 +296,6 @@ a:hover,a:active {
 .hero .message {
   height: 420px;
   background:url('../img/transparent1x1.png');
-  background-color: rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0);
   -webkit-text-stroke: 1px rgba(0,0,0,.2);
    text-shadow:
      3px  3px 0 rgba(0, 0, 0, 0.7),
@@ -1336,17 +1335,4 @@ $projects-slider-height: 350px;
   (-o-min-device-pixel-ratio: 5/4), 
   (-webkit-min-device-pixel-ratio: 1.25), 
   (min-device-pixel-ratio: 1.25), 
-  (min-resolution: 1.25dppx) {
-
-//  .hero {
-//    .engineering {
-//      background:url('../img/transportation-civil-engineering@2x.jpg') no-repeat center center;
-//      @include background-size(cover);
-//    }
-//
-//    .environmental {
-//      background:url('../img/environmental-services@2x.jpg') no-repeat center center;
-//      @include background-size(cover);
-//    }
-//  }
-}
+  (min-resolution: 1.25dppx) {}

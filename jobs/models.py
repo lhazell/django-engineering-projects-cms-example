@@ -32,6 +32,9 @@ class Job(models.Model):
     )
     date_created = models.DateTimeField(verbose_name='Date Created', auto_now_add=True)
 
+    class Meta:
+        permissions = (("readonly", "Can Only Read Projects"),)
+
     def get_absolute_url(self):
         return reverse('jobs:job_detail', args=[self.id])
 

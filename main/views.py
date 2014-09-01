@@ -134,3 +134,18 @@ class DymanicCSS(TemplateView):
         key = blobstore.create_gs_key('/gs' + name)
         return images.get_serving_url(key)
 
+#Create dynamic Stylesheet for IE8 Slides
+class DymanicCSSIe8(TemplateView):
+    template_name="main/css/dynamic-css-ie8.css"
+
+    def get_context_data(self, **kwargs):
+        context = super(DymanicCSS, self).get_context_data(**kwargs)
+        context['slides'] = CustomSlide.objects.all()
+        return context
+
+    def url(self, name):
+        """
+        Ask blobstore api for an url to directly serve the file
+        """
+        key = blobstore.create_gs_key('/gs' + name)
+        return images.get_serving_url(key)

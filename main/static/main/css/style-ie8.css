@@ -1,7 +1,15 @@
 /* HERO */
 
-.no-bgsizecover .hero{
-background: none;
+.hero {
+    background: rgb(0, 89, 177);
     /* IMPORTANT: The file is relative to the index, not the CSS */
-        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../static/main/img/ie-fallback-images/lindauson3.jpg', sizingMethod='scale')";
+
+    /* background: none;*/
+    /* TODO: Make dynamic since CSS is dynamic*/
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../static/main/img/ie-fallback-images/###########', sizingMethod='scale')";*/
+}
+
+.hero li {
+    background-color: rgb(0, 89, 177);
+    background-image: none;
 }

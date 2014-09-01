@@ -16,6 +16,7 @@ class ContactForm(models.Model):
     def __unicode__(self):
        return 'message from ' + self.name
 
+
 #Custom Slider Model
 class CustomSlide(models.Model):
 
@@ -31,6 +32,9 @@ class CustomSlide(models.Model):
         storage, path = self.slide_image.storage, self.slide_image.path
         super(CustomSlide, self).delete(*args, **kwargs)
         storage.delete(path)
+
+    class Meta:
+        permissions = (("readonly", "Can Only Read Projects"),)
 
     def __unicode__(self):
         return self.slide_heading

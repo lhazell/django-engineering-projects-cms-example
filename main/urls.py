@@ -4,7 +4,7 @@ from django.contrib.sites.models import Site
 from django.contrib.sitemaps import GenericSitemap, FlatPageSitemap
 from django.views.generic import TemplateView
 
-from main.views import Index, DymanicCSS, ContactView
+from main.views import Index, DymanicCSS, DymanicCSSIe8, ContactView
 from project.models import PublicProject
 from jobs.models import Job
 
@@ -39,6 +39,8 @@ urlpatterns = patterns('',
     url(r'^(?:|index\.html)$', Index.as_view(), name='main-index',),
     # ex: /css/dynamic-css.css
     url(r'^css/dynamic-css\.css$', DymanicCSS.as_view(content_type="text/css"), name='dynamic-css'),
+    # ex: /css/ie8-dynamic-css.css
+    url(r'^css/dynamic-css-ie8\.css$', DymanicCSSIe8.as_view(content_type="text/css"), name='dynamic-css-ie8'),
     # ex: /contact
     url(r'^contact/$', ContactView.as_view(), name='main-contact',),
     # ex: /thanks

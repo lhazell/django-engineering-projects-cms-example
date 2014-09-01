@@ -1,4 +1,5 @@
 {% load bootstrap_template_tags %}
+{% load project_filters %}
             <div class="control-group{% if field.errors %} error{% endif %} {% if field.field.name %} field-{{ field.field.name }}{% endif %}">
                 {% if field.is_checkbox %}
                     <div class="controls">
@@ -40,7 +41,9 @@
                         <div class="control-label">{{ field.label_tag }}</div>
                         <div class="controls">
                             {% if field.is_readonly %}
-                                <p>{{ field.contents|linebreaksbr }}</p>
+                                {% autoescape off %}
+                                    <p>{{ field.contents|safe|addtags }}</p>
+                                {% endautoescape %}
                             {% else %}
                                 {% if field.field|widget_type == 'adminradioselect'  %}
                                     {{ field.field }}
