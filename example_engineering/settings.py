@@ -14,7 +14,7 @@ REDACTOR_UPLOAD = 'uploads/'
 
 #---------------------------------------------------------------------
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.example-engineering.appspot.com']
